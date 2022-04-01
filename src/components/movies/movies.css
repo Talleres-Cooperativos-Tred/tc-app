@@ -1,0 +1,44 @@
+.movies__component {
+    text-align: center;
+}
+
+.card__container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    margin: 20px;
+    text-align: center;
+    border: 2px solid #fff;
+}
+
+.search__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+
+.search__form > input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 30%;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.search__form > button {
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.search__form > button:active {
+    background-color: #a9a9a9;
+}
