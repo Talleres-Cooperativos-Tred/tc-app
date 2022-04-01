@@ -20,14 +20,16 @@ const users = [
     },
 ];
 
+const store = generateStore();
+
 function App() {
     const [user, setUser] = useState({ userName: "", password: "" });
     const [loginSucceed, setLoginSucceed] = useState(false);
     const [loginError, setLoginError] = useState(false);
     const [instance, setInstance] = useState("login");
-    const store = generateStore();
 
-    const handleLogin = () => {
+    const handleLogin = e => {
+        e.preventDefault();
         if (instance === "login") {
             const success = users.find(element => {
                 return (

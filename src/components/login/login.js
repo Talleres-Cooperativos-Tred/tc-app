@@ -24,7 +24,7 @@ const Login = ({
                     El usuario o la contraseña son incorrectos
                 </span>
             )}
-            <div>
+            <form onSubmit={handleLogin}>
                 <input
                     name="userName"
                     onChange={handleChange}
@@ -37,8 +37,8 @@ const Login = ({
                     placeholder="Contraseña"
                     type="text"
                 />
-                <button onClick={handleLogin}>Ingresar</button>
-            </div>
+                <button type="submit">Ingresar</button>
+            </form>
             {instance === "login" ? (
                 <span
                     onClick={() => setInstance("dsadsa")}
