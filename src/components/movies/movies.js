@@ -7,8 +7,7 @@ import Card from "./card";
 const Movies = () => {
     const dispatch = useDispatch();
     const moviesStore = useSelector(store => store.movies);
-
-    const [searchText, setSearchText] = useState("");
+    let typingTimer;
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -22,41 +21,25 @@ const Movies = () => {
         //eslint-disable-next-line
     }, [moviesStore.loadingError, moviesStore.loaded]);
 
-    const searchMovie = event => {
-        event.preventDefault();
-        if (searchText.length === 0) {
-            setError("Introduzca un texto valido");
-        } else {
-            setError("");
+    const handleKeyUp = e => {
+        const searchText = e.target.value;
+
+        clearTimeout(typingTimer);
+
+        typingTimer = setTimeout(() => {
             dispatch(loadMovies(searchText));
-            setSearchText("");
-        }
+        }, 1000);
     };
-
-    // const handleKeyUp = e => {
-    //     let typingTimer;
-    //     const searchText = e.target.value;
-
-    //     clearTimeout(typingTimer);
-
-    //     typingTimer = setTimeout(() => {
-    //         console.log(searchText);
-    //     }, 1000);
-    // };
 
     return (
         <div className="movies__component">
             <h1>Movies component</h1>
-            <form className="search__form" onSubmit={e => searchMovie(e)}>
-                <input
-                    type="text"
-                    value={searchText}
-                    onChange={e => setSearchText(e.target.value)}
-                />
-                <button type="submit">
+            <div className="search__form">
+                <input type="text" onKeyUp={e => handleKeyUp(e)} />
+                {/* <button type="submit">
                     <span className="material-icons md-48">search</span>
-                </button>
-            </form>
+                </button> */}
+            </div>
             <span
                 style={{
                     color: "red",
