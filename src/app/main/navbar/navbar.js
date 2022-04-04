@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <div className="navbar__container">
             <div className="navbar">
-                <div className="burger" onClick={() => setOpen(!open)}>
+                <div className="burger" onClick={() => setOpen(open)}>
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>
@@ -26,9 +26,6 @@ const Navbar = () => {
                     </Link>
                     <Link to="/movies" className="nav_element">
                         Movies
-                    </Link>
-                    <Link to="/element2" className="nav_element">
-                        Hola
                     </Link>
                 </Collapsible>
             </div>
