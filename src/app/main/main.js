@@ -11,8 +11,8 @@ const Main = () => {
             <Navbar />
             <div className="page__content">
                 <Routes>
-                    <Route path="/" exact element={<Navigate to="/movies" />} />
-                    <Route path="*" exact element={<Navigate to="/movies" />} />
+                    <Route path="/" exact element={<Navigate to="/avatar" />} />
+                    <Route path="*" exact element={<Navigate to="/avatar" />} />
                     <Route path="/movies" exact={true} element={<Movies />} />
                     <Route
                         path="/avatar"

@@ -21,11 +21,11 @@ const Navbar = () => {
                     transitionTime={200}
                     onTriggerClosing={() => setOpen(false)}
                 >
-                    <Link to="/movies" className="nav_element">
-                        Movies
-                    </Link>
                     <Link to="/avatar" className="nav_element">
                         Avatar generator
+                    </Link>
+                    <Link to="/movies" className="nav_element">
+                        Movies
                     </Link>
                     <Link to="/element2" className="nav_element">
                         Hola
