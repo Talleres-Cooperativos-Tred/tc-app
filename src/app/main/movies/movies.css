@@ -1,5 +1,6 @@
 .movies__component {
     text-align: center;
+    min-height: 100%;
 }
 
 .card__container {

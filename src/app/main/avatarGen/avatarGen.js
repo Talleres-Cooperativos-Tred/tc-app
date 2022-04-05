@@ -8,14 +8,18 @@ const AvatarGen = () => {
 
     const handleClick = () => {
         setText(input);
+        if (input.length === 0) {
+            setText("tomy");
+        }
     };
 
     return (
         <div className="avatar__container">
-            <h1>Create you Avatar!</h1>
+            <h1>Create your Avatar!</h1>
             <input
                 type="text"
                 value={input}
+                placeholder="Type something..."
                 onChange={e => setInput(e.target.value)}
             />
             <button onClick={handleClick}>Give my avatar</button>

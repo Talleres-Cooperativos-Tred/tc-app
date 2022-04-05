@@ -33,7 +33,7 @@ const Movies = () => {
 
     return (
         <div className="movies__component">
-            <h1>Movies component</h1>
+            <h2>Movies component</h2>
             <div className="search__form">
                 <input type="text" onKeyUp={e => handleKeyUp(e)} />
                 {/* <button type="submit">

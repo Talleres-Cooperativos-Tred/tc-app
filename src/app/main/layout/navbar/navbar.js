@@ -6,9 +6,9 @@ import "./navbar.css";
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     return (
-        <div className="navbar__container">
+        <nav className="navbar__container">
             <div className="navbar">
-                <div className="burger" onClick={() => setOpen(open)}>
+                <div className="burger" onClick={() => setOpen(!open)}>
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>
@@ -21,15 +21,30 @@ const Navbar = () => {
                     transitionTime={200}
                     onTriggerClosing={() => setOpen(false)}
                 >
-                    <Link to="/avatar" className="nav_element">
+                    <Link
+                        onClick={() => setOpen(false)}
+                        to="/tc/avatar"
+                        className="nav_element"
+                    >
                         Avatar generator
                     </Link>
-                    <Link to="/movies" className="nav_element">
+                    <Link
+                        onClick={() => setOpen(false)}
+                        to="/tc/movies"
+                        className="nav_element"
+                    >
                         Movies
+                    </Link>
+                    <Link
+                        onClick={() => setOpen(false)}
+                        to="/tc/moviesdsadad"
+                        className="nav_element"
+                    >
+                        Moviessasa
                     </Link>
                 </Collapsible>
             </div>
-        </div>
+        </nav>
     );
 };
 

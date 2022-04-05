@@ -2,7 +2,6 @@ import { load } from "../api";
 import * as types from "../types/index";
 
 export const loadMovies = text => async dispatch => {
-    console.log("render");
     try {
         dispatch({
             type: types.LOAD_MOVIES_INIT,

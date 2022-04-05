@@ -1,26 +1,45 @@
 import React from "react";
-import Movies from "./movies/movies";
-import Navbar from "./navbar/navbar";
-import "./main.css";
-import { Navigate, Route, Routes } from "react-router-dom";
-import AvatarGen from "./avatarGen/avatarGen";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Login from "../login/login";
+import Layout from "./layout/layout";
 
 const Main = () => {
+    const { logged } = useSelector(store => store.login);
+
     return (
         <>
-            <Navbar />
-            <div className="page__content">
-                <Routes>
-                    <Route path="/" exact element={<Navigate to="/avatar" />} />
-                    <Route path="*" exact element={<Navigate to="/avatar" />} />
-                    <Route path="/movies" exact={true} element={<Movies />} />
-                    <Route
-                        path="/avatar"
-                        exact={true}
-                        element={<AvatarGen />}
-                    />
-                </Routes>
-            </div>
+            <Routes>
+                <Route
+                    path="/auth"
+                    element={
+                        logged === false ? (
+                            <Login />
+                        ) : (
+                            <Navigate replace to="/tc" />
+                        )
+                    }
+                />
+                <Route
+                    path="/tc/*"
+                    element={
+                        logged === false ? (
+                            <Navigate replace to="/auth" />
+                        ) : (
+                            <Layout />
+                        )
+                    }
+                />
+
+                <Route
+                    path="*"
+                    element={<Navigate to={logged === false ? "auth" : "tc"} />}
+                />
+                <Route
+                    path="/"
+                    element={<Navigate to={logged === false ? "auth" : "tc"} />}
+                />
+            </Routes>
         </>
     );
 };

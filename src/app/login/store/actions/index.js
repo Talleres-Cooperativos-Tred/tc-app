@@ -1,5 +1,19 @@
-import { users } from "../api";
 import * as types from "./types";
+
+const users = [
+    {
+        userName: "Tred",
+        password: "tredinstructor12",
+    },
+    {
+        userName: "adrianDev",
+        password: "adrianDevpass12",
+    },
+    {
+        userName: "lu15",
+        password: "lupass15",
+    },
+];
 
 export const handleLogin = loginInfo => dispatch => {
     dispatch({
@@ -8,8 +22,8 @@ export const handleLogin = loginInfo => dispatch => {
 
     const success = users.find(element => {
         return (
-            element.userName === loginInfo.user.userName &&
-            element.password === loginInfo.user.password
+            element.userName === loginInfo.userName &&
+            element.password === loginInfo.password
         );
     });
 
@@ -23,3 +37,5 @@ export const handleLogin = loginInfo => dispatch => {
         });
     }
 };
+
+export const addUser = () => {};
