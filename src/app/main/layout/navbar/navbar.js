@@ -35,13 +35,6 @@ const Navbar = () => {
                     >
                         Movies
                     </Link>
-                    <Link
-                        onClick={() => setOpen(false)}
-                        to="/tc/moviesdsadad"
-                        className="nav_element"
-                    >
-                        Moviessasa
-                    </Link>
                 </Collapsible>
             </div>
         </nav>
