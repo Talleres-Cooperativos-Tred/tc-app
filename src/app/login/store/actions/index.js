@@ -38,4 +38,6 @@ export const handleLogin = loginInfo => dispatch => {
     }
 };
 
-export const addUser = () => {};
+export const addUser = () => {
+    // your code here:
+};
