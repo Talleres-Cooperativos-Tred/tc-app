@@ -35,6 +35,13 @@ const Navbar = () => {
                     >
                         Movies
                     </Link>
+                    <Link
+                        onClick={() => setOpen(false)}
+                        to="/tc/rickmorty"
+                        className="nav_element"
+                    >
+                        Rick & Morty
+                    </Link>
                 </Collapsible>
             </div>
         </nav>

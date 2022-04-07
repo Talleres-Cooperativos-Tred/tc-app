@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { handleLogin } from "./store/actions";
+import { addUser, handleLogin } from "./store/actions";
 import "./login.css";
 
 const Login = () => {
@@ -10,7 +10,8 @@ const Login = () => {
     const [user, setUser] = useState({ userName: "", password: "" });
     const [signingIn, setSigningIn] = useState(false);
 
-    const { logginError, logged } = useSelector(store => store.login);
+    const { logged, errorMessage } = useSelector(store => store.login);
+
     const handleChange = e => {
         const newUser = { ...user, [e.target.name]: e.target.value };
         setUser(newUser);
@@ -27,20 +28,18 @@ const Login = () => {
 
         if (signingIn === true) {
             //codigo para agregar usuario aca:
+            dispatch(addUser(user));
         } else {
             dispatch(handleLogin(user));
         }
     };
-
     return (
         <div className="login">
             <h2> {signingIn === false ? "Iniciar Sesion" : "Registrate"} </h2>
-            {logginError === false ? (
+            {errorMessage.length === 0 ? (
                 ""
             ) : (
-                <span style={{ color: "red" }}>
-                    El usuario o la contraseña son incorrectos
-                </span>
+                <span style={{ color: "red" }}>{errorMessage}</span>
             )}
             <form onSubmit={handleSubmit}>
                 <input
@@ -55,17 +54,14 @@ const Login = () => {
                     placeholder="Contraseña"
                     type="text"
                 />
-                <button type="submit">Ingresar</button>
+                <button type="submit">
+                    {signingIn === true ? "Iniciar sesion" : "Registrarse"}
+                </button>
             </form>
-            {signingIn === false ? (
-                <span onClick={() => setSigningIn(true)} className="register">
-                    Registrarse
-                </span>
-            ) : (
-                <span onClick={() => setSigningIn(false)} className="register">
-                    Iniciar sesion
-                </span>
-            )}
+
+            <span onClick={() => setSigningIn(!signingIn)} className="register">
+                {signingIn === true ? "Iniciar sesion" : "Registrarse"}
+            </span>
         </div>
     );
 };

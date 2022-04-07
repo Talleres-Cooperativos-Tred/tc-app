@@ -1,5 +1,5 @@
 const initState = {
-    logged: false,
+    logged: true,
     logging: false,
     logginError: false,
     errorMessage: "",
@@ -27,6 +27,13 @@ const mainReducer = function (state = initState, action) {
                 logginError: true,
                 errorMessage: "Error: Usuario o contraseña incorrectos",
             };
+        case "SIGN_IN_FAILED":
+            return {
+                ...state,
+                errorMessage: action.payload,
+                logginError: true,
+            };
+
         default:
             return state;
     }

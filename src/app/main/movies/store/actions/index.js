@@ -1,5 +1,5 @@
 import { load } from "../api";
-import * as types from "../types/index";
+import * as types from "./types";
 
 export const loadMovies = text => async dispatch => {
     try {

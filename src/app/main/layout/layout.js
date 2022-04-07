@@ -4,6 +4,7 @@ import AvatarGen from "../avatarGen/avatarGen";
 import Movies from "../movies/movies";
 import Navbar from "./navbar/navbar";
 import "./layout.css";
+import RickMorty from "../R&M/rickMorty";
 
 const Layout = () => {
     return (
@@ -15,6 +16,8 @@ const Layout = () => {
                     <Route path="home" exact element={<h1>Welcome!</h1>} />
                     <Route path="movies" exact element={<Movies />} />
                     <Route path="avatar" exact element={<AvatarGen />} />
+                    <Route path="avatar" exact element={<AvatarGen />} />
+                    <Route path="rickmorty" exact element={<RickMorty />} />
                     <Route
                         path=""
                         exact

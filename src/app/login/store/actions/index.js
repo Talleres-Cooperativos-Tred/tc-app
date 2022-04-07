@@ -38,6 +38,20 @@ export const handleLogin = loginInfo => dispatch => {
     }
 };
 
-export const addUser = () => {
+export const addUser = newUser => dispatch => {
     // your code here:
+    //made by Lu15
+
+    const repeatedUser = users.find(user => {
+        return user.userName === newUser.userName;
+    });
+
+    if (repeatedUser) {
+        dispatch({
+            type: types.SIGN_IN_FAILED,
+            payload: "El usuario ya existe",
+        });
+    } else {
+        users.push(newUser);
+    }
 };
