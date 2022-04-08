@@ -1,19 +1,21 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./avatarGen.css";
+import { setAvatarName } from "./store/actions";
 
 const AvatarGen = () => {
+    const dispatch = useDispatch();
+    const { avatarName } = useSelector(store => store.avatar);
+    console.log(avatarName);
     const [input, setInput] = useState("");
-    const [text, setText] = useState("tomy");
     const [avatarType, setAvatarType] = useState(1);
-
+    const [fullUrl, setFullUrl] = useState(
+        `https://robohash.org/${avatarName}?set=set${avatarType}`
+    );
     const handleSubmit = e => {
         e.preventDefault();
-        setText(input);
-        if (input.length === 0) {
-            setText("tomy");
-        }
+        dispatch(setAvatarName(input));
     };
-
     return (
         <div className="avatar__container">
             <h1>Create your Avatar!</h1>
@@ -27,10 +29,7 @@ const AvatarGen = () => {
                 <button type="submit">Give my avatar</button>
             </form>
 
-            <img
-                src={`https://robohash.org/${text}?set=set${avatarType}`}
-                alt={text}
-            />
+            <img src={fullUrl} alt={avatarName} />
             <div className="radio__container">
                 <input type="radio" value="1" defaultChecked name="name" />
                 <input name="name" value="2" type="radio" />

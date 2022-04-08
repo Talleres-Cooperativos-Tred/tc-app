@@ -5,6 +5,7 @@ import Movies from "../movies/movies";
 import Navbar from "./navbar/navbar";
 import "./layout.css";
 import RickMorty from "../R&M/rickMorty";
+import routesConfig from "../../config/routesConfig";
 
 const Layout = () => {
     return (
@@ -13,11 +14,22 @@ const Layout = () => {
             <div className="fll"></div>
             <section className="page__content">
                 <Routes>
-                    <Route path="home" exact element={<h1>Welcome!</h1>} />
-                    <Route path="movies" exact element={<Movies />} />
-                    <Route path="avatar" exact element={<AvatarGen />} />
+                    {routesConfig.map(componentRoutes => {
+                        return componentRoutes.map((route, i) => {
+                            return (
+                                <Route
+                                    key={i}
+                                    path={route.path}
+                                    exact={route.exact}
+                                    element={route.component}
+                                />
+                            );
+                        });
+                    })}
+
                     <Route path="avatar" exact element={<AvatarGen />} />
                     <Route path="rickmorty" exact element={<RickMorty />} />
+                    <Route path="home" exact element={<h1>Welcome!</h1>} />
                     <Route
                         path=""
                         exact
