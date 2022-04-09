@@ -1,6 +1,5 @@
 const initState = {
-    avatarName: "tomy",
-    fullUrl: "",
+    avatarUrl: "",
 };
 
 export default function avatarGenReducer(state = initState, action) {
@@ -8,7 +7,7 @@ export default function avatarGenReducer(state = initState, action) {
         case "CHANGE_AVATAR":
             return {
                 ...state,
-                avatarName: action.payload,
+                avatarUrl: action.payload,
             };
 
         default:

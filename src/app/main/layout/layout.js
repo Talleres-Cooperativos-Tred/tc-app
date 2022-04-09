@@ -1,10 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import AvatarGen from "../avatarGen/avatarGen";
-import Movies from "../movies/movies";
 import Navbar from "./navbar/navbar";
 import "./layout.css";
-import RickMorty from "../R&M/rickMorty";
 import routesConfig from "../../config/routesConfig";
 
 const Layout = () => {
@@ -26,9 +23,6 @@ const Layout = () => {
                             );
                         });
                     })}
-
-                    <Route path="avatar" exact element={<AvatarGen />} />
-                    <Route path="rickmorty" exact element={<RickMorty />} />
                     <Route path="home" exact element={<h1>Welcome!</h1>} />
                     <Route
                         path=""

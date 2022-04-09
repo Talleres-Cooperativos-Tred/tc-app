@@ -10,3 +10,16 @@ body {
     padding: 0;
     border: 0;
 }
+
+.fut__button {
+    padding: 15px 25px;
+    border: none;
+    margin: 20px;
+    border-radius: 8px;
+    background-color: greenyellow;
+}
+
+.fut__button:hover {
+    -webkit-box-shadow: 5px 5px 50px -3px rgba(103,255,33,0.81); 
+box-shadow: 5px 5px 50px -3px rgba(103,255,33,0.81);
+}

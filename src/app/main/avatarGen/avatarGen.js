@@ -1,21 +1,25 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./avatarGen.css";
-import { setAvatarName } from "./store/actions";
+import { setAvatar } from "./store/actions";
 
 const AvatarGen = () => {
-    const dispatch = useDispatch();
-    const { avatarName } = useSelector(store => store.avatar);
-    console.log(avatarName);
     const [input, setInput] = useState("");
+    const [text, setText] = useState("tomy");
     const [avatarType, setAvatarType] = useState(1);
-    const [fullUrl, setFullUrl] = useState(
-        `https://robohash.org/${avatarName}?set=set${avatarType}`
-    );
+
+    const dispatch = useDispatch();
+
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(setAvatarName(input));
+        setText(input);
+        if (input.length === 0) {
+            setText("tomy");
+        }
     };
+
+    const avatarUrl = `https://robohash.org/${text}?set=set${avatarType}`;
+
     return (
         <div className="avatar__container">
             <h1>Create your Avatar!</h1>
@@ -26,15 +30,43 @@ const AvatarGen = () => {
                     placeholder="Type something..."
                     onChange={e => setInput(e.target.value)}
                 />
+
                 <button type="submit">Give my avatar</button>
             </form>
 
-            <img src={fullUrl} alt={avatarName} />
+            <img src={avatarUrl} alt={text} />
+            <button
+                onClick={() => dispatch(setAvatar(avatarUrl))}
+                className="fut__button"
+            >
+                Colocar de perfil
+            </button>
             <div className="radio__container">
-                <input type="radio" value="1" defaultChecked name="name" />
-                <input name="name" value="2" type="radio" />
-                <input name="name" value="3" type="radio" />
-                <input name="name" value="4" type="radio" />
+                <input
+                    type="radio"
+                    value="1"
+                    defaultChecked
+                    name="name"
+                    onClick={e => setAvatarType(e.target.value)}
+                />
+                <input
+                    name="name"
+                    onClick={e => setAvatarType(e.target.value)}
+                    value="2"
+                    type="radio"
+                />
+                <input
+                    name="name"
+                    onClick={e => setAvatarType(e.target.value)}
+                    value="3"
+                    type="radio"
+                />
+                <input
+                    name="name"
+                    onClick={e => setAvatarType(e.target.value)}
+                    value="4"
+                    type="radio"
+                />
             </div>
         </div>
     );

@@ -11,11 +11,16 @@ const Navbar = () => {
     return (
         <nav className="navbar__container">
             <div className="navbar">
-                <img
-                    className="photos"
-                    src="https://api.multiavatar.com/Binx Bond.png"
-                    alt="freeav"
-                />
+                {avatarStore.avatarUrl.length === 0 ? (
+                    ""
+                ) : (
+                    <img
+                        className="photos"
+                        src={avatarStore.avatarUrl}
+                        alt="freeav"
+                    />
+                )}
+
                 <div className="burger" onClick={() => setOpen(!open)}>
                     <div className="line"></div>
                     <div className="line"></div>
