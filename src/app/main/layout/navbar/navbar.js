@@ -34,9 +34,10 @@ const Navbar = () => {
                     transitionTime={200}
                     onTriggerClosing={() => setOpen(false)}
                 >
-                    {navigationConfig.map(element => {
+                    {navigationConfig.map((element, i) => {
                         return (
                             <Link
+                                key={i}
                                 onClick={() => setOpen(false)}
                                 to={element.route}
                                 className="nav_element"
