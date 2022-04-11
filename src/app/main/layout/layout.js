@@ -11,17 +11,15 @@ const Layout = () => {
             <div className="fll"></div>
             <section className="page__content">
                 <Routes>
-                    {routesConfig.map(componentRoutes => {
-                        return componentRoutes.map((route, i) => {
-                            return (
-                                <Route
-                                    key={i}
-                                    path={route.path}
-                                    exact={route.exact}
-                                    element={route.component}
-                                />
-                            );
-                        });
+                    {routesConfig.map((route, i) => {
+                        return (
+                            <Route
+                                key={i}
+                                path={route.path}
+                                exact={route.exact}
+                                element={route.component}
+                            />
+                        );
                     })}
                     <Route path="home" exact element={<h1>Welcome!</h1>} />
                     <Route

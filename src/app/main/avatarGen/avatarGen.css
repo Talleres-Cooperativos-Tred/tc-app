@@ -25,14 +25,10 @@
     font-size: 20px;
 }
 
-.avatar__container > form > img {
-    border: 10px double rgb(131, 130, 130);
-    border-radius: 50%;
+.avatar__container  > img {
+  width: 200px;
 }
 
-.avatar__container > img:hover {
-    background-color: #242424;
-}
 
 .avatar__container > form > button {
     padding: 10px;
@@ -44,11 +40,6 @@
 .avatar__container > button:active {
 
     background-color: lightgray;
-}
-
-.avatar__container {
-    width: 200px;
-    height: 200px;
 }
 
 .radio__container {

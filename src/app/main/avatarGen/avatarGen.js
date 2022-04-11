@@ -22,25 +22,32 @@ const AvatarGen = () => {
 
     return (
         <div className="avatar__container">
-            <h1>Create your Avatar!</h1>
+            <h1>¡Crea tu avatar!</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={input}
-                    placeholder="Type something..."
+                    placeholder="Escribe lo que sea"
                     onChange={e => setInput(e.target.value)}
                 />
 
-                <button type="submit">Give my avatar</button>
+                <button type="submit">¡Quiero mi avatar!</button>
             </form>
 
             <img src={avatarUrl} alt={text} />
             <button
                 onClick={() => dispatch(setAvatar(avatarUrl))}
-                className="fut__button"
+                className="green__neon__button"
             >
                 Colocar de perfil
             </button>
+            <div>
+                <p>
+                    ¿No te gustan estos robots? ¡No hay problema! Tambien
+                    tenemos... ¡mas robots! y monstruos. Y si todo esto te
+                    resulta demasiado aterrador, prueba con los gatitos
+                </p>
+            </div>
             <div className="radio__container">
                 <input
                     type="radio"
