@@ -1,44 +1,45 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadRecipe } from "./store/actions";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// https://www.themealdb.com/api.php
-
-const url = "https://www.themealdb.com/api/json/v1/1/search.php?f=a";
 
 const MealDB = () => {
-    const [recipes, setRecipes] = useState([]);
+    const dispatch = useDispatch();
+    const foodStore = useSelector(store => store.food);
+    console.log(foodStore);
 
-    const navigate = useNavigate();
+    dispatch(loadRecipe())
 
-    const fetchRecipes = async () => {
-        const res = await axios.get(url);
-        setRecipes(res.data.meals);
-    };
-
-    useEffect(() => {
-        fetchRecipes();
-    }, []);
-
-    const openDetail = id => {
-        navigate(`${id}`);
+    const handleKeyUp = e => {
+        const searchText = e.target.value;
+        dispatch(loadRecipe(searchText))
     };
 
     return (
         <div>
-            <ul>
-                {recipes.map(meal => {
-                    return (
-                        <li
-                            key={meal.idMeal}
-                            onClick={() => openDetail(meal.idMeal)}
-                        >
-                            {meal.strMeal} - {meal.strCategory}
-                        </li>
-                    );
+            <h2>Recipe</h2>
+            <div>
+                <input type="text" onKeyUp={e => handleKeyUp(e)} />
+                <button type="submit"/>
+            </div>
+            <div>
+                {foodStore.data.meals[0].map((food) => {
+                    return(
+                        <div>
+                        <img
+                width={320}
+                height={500}
+                src={food[0].strMealThumb}
+                alt={food[0].strMeal}
+            />
+            <h3> {food.strMeal} </h3>
+            </div>
+                    )
                 })}
-            </ul>
+            </div>
         </div>
-    );
+    )
 };
 
 export default MealDB;
