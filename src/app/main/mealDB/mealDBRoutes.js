@@ -1,4 +1,5 @@
 import MealDB from "./mealDB";
+import Recipes from "./recipes/recipes";
 import RecipeDetail from "./recipeDetail/recipeDetail";
 
 const mealDBRoutes = [
@@ -8,7 +9,12 @@ const mealDBRoutes = [
         component: <MealDB />,
     },
     {
-        path: "mealdb/:id",
+        path: "mealdb/:category",
+        exact: true,
+        component: <Recipes />,
+    },
+    {
+        path: "mealdb/:category/:id",
         exact: true,
         component: <RecipeDetail />,
     },

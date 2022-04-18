@@ -1,45 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadRecipe } from "./store/actions";
-import axios from "axios";
+import { getCategories } from "./store/actions";
 import { useNavigate } from "react-router-dom";
+import "./mealDB.css";
 
 const MealDB = () => {
     const dispatch = useDispatch();
-    const foodStore = useSelector(store => store.food);
-    console.log(foodStore);
+    const navigate = useNavigate();
+    const { categories } = useSelector(store => store.meal);
 
-    dispatch(loadRecipe())
-
-    const handleKeyUp = e => {
-        const searchText = e.target.value;
-        dispatch(loadRecipe(searchText))
-    };
+    useEffect(() => {
+        dispatch(getCategories());
+    }, [dispatch]);
 
     return (
         <div>
             <h2>Recipe</h2>
             <div>
-                <input type="text" onKeyUp={e => handleKeyUp(e)} />
-                <button type="submit"/>
+                <input type="text" />
+                <button type="submit" />
             </div>
-            <div>
-                {foodStore.data.meals[0].map((food) => {
-                    return(
-                        <div>
-                        <img
-                width={320}
-                height={500}
-                src={food[0].strMealThumb}
-                alt={food[0].strMeal}
-            />
-            <h3> {food.strMeal} </h3>
-            </div>
-                    )
+            <div className="categories__container">
+                {categories.map((category, i) => {
+                    console.log(category.strMealThumb);
+                    return (
+                        <p
+                            key={i}
+                            onClick={() => navigate(category.strCategory)}
+                        >
+                            <img
+                                src={category.strCategoryThumb}
+                                width={200}
+                                alt={category.strCategory}
+                            />
+                            {category.strCategory}
+                        </p>
+                    );
                 })}
             </div>
         </div>
-    )
+    );
 };
 
 export default MealDB;
