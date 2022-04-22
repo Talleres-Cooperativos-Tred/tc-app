@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./navbar/navbar";
 import "./layout.css";
@@ -17,7 +17,11 @@ const Layout = () => {
                                 key={i}
                                 path={route.path}
                                 exact={route.exact}
-                                element={route.component}
+                                element={
+                                    <Suspense fallback={<h3>Cargando...</h3>}>
+                                        <route.component />
+                                    </Suspense>
+                                }
                             />
                         );
                     })}

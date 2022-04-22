@@ -1,22 +1,20 @@
-import MealDB from "./mealDB";
-import Recipes from "./recipes/recipes";
-import RecipeDetail from "./recipeDetail/recipeDetail";
+import { lazy } from "react";
 
 const mealDBRoutes = [
     {
         path: "mealdb",
         exact: true,
-        component: <MealDB />,
+        component: lazy(() => import("./mealDB")),
     },
     {
         path: "mealdb/:category",
         exact: true,
-        component: <Recipes />,
+        component: lazy(() => import("./recipes/recipes")),
     },
     {
         path: "mealdb/:category/:id",
         exact: true,
-        component: <RecipeDetail />,
+        component: lazy(() => import("./recipeDetail/recipeDetail")),
     },
 ];
 

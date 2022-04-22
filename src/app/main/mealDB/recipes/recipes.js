@@ -1,40 +1,28 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { getRecipes } from "../store/actions";
+import RecipeCard from "./recipeCard/recipeCard";
 
 const Recipes = () => {
     const { category } = useParams();
     const navigate = useNavigate();
-    const [recipes, setRecipes] = useState([]);
+    const { recipes, loading } = useSelector(store => store.meal);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const getRecipes = async () => {
-            const res = await axios.get(
-                "https://www.themealdb.com/api/json/v1/1/filter.php?c=" +
-                    category
-            );
-            setRecipes(res.data.meals);
-        };
+        dispatch(getRecipes(category));
+    }, [category, dispatch]);
 
-        getRecipes();
-    }, [category]);
+    if (loading === true) {
+        return <h1> Cargando... </h1>;
+    }
 
     return (
         <div>
             <ol>
                 {recipes.map(meal => {
-                    return (
-                        <li
-                            key={meal.idMeal}
-                            onClick={() => navigate(meal.idMeal)}
-                        >
-                            <img
-                                width={200}
-                                src={meal.strMealThumb}
-                                alt={meal.strMeal}
-                            />
-                        </li>
-                    );
+                    return <RecipeCard meal={meal} navigate={navigate} />;
                 })}
             </ol>
         </div>

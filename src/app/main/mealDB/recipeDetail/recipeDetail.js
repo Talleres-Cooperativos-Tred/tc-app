@@ -1,20 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getRecipeInfo } from "../store/actions";
 
 const RecipeDetail = () => {
     const { id } = useParams();
-    const [recipe, setRecipe] = useState(null);
-
-    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
-
-    const getMeal = async () => {
-        const res = await axios.get(url);
-        setRecipe(res.data.meals[0]);
-    };
+    const { recipe } = useSelector(store => store.meal);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        getMeal();
+        dispatch(getRecipeInfo(id));
         // eslint-disable-next-line
     }, []);
 

@@ -26,3 +26,51 @@ export const getCategories = () => async dispatch => {
         });
     }
 };
+
+export const getRecipes = category => async dispatch => {
+    try {
+        dispatch({
+            type: types.LOAD_RECIPES_INIT,
+        });
+        const res = await api.loadRecipes(category);
+        if (res.status === 200) {
+            dispatch({
+                type: types.LOAD_RECIPES_SUCCEED,
+                payload: res.data.meals,
+            });
+        } else {
+            dispatch({
+                type: types.LOAD_RECIPES_FAILED,
+            });
+        }
+    } catch (error) {
+        dispatch({
+            type: types.LOAD_RECIPES_FAILED,
+        });
+        console.error(error.message);
+    }
+};
+
+export const getRecipeInfo = id => async dispatch => {
+    try {
+        dispatch({
+            type: types.LOAD_RECIPE_INIT,
+        });
+        const res = await api.loadRecipeInfo(id);
+
+        if (res.status === 200) {
+            dispatch({
+                type: types.LOAD_RECIPE_SUCCEED,
+                payload: res.data.meals[0],
+            });
+        } else {
+            dispatch({
+                type: types.LOAD_RECIPE_FAILED,
+            });
+        }
+    } catch (error) {
+        dispatch({
+            type: types.LOAD_RECIPE_FAILED,
+        });
+    }
+};

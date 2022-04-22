@@ -29,6 +29,22 @@ export default function mealDBReducer(state = initState, action) {
                 loading: false,
                 loadingError: true,
             };
+        case "LOAD_RECIPES_INIT":
+            return {
+                ...state,
+                loading: true,
+            };
+        case "LOAD_RECIPES_SUCCEED":
+            return {
+                ...state,
+                recipes: action.payload,
+                loading: false,
+            };
+        case "LOAD_RECIPE_SUCCEED":
+            return {
+                ...state,
+                recipe: action.payload,
+            };
 
         default:
             return state;
