@@ -1,10 +1,10 @@
-import Movies from "./movies";
+import { lazy } from "react";
 
 const moviesRoutes = [
     {
         path: "movies",
         exact: true,
-        component: <Movies />,
+        component: lazy(() => import("./movies")),
     },
 ];
 
