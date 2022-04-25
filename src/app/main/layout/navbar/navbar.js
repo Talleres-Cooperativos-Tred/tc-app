@@ -6,8 +6,31 @@ import navigationConfig from "../../../config/navigationConfig";
 import "./navbar.css";
 
 const Navbar = () => {
-    const [open, setOpen] = useState(false);
     const avatarStore = useSelector(store => store.avatar);
+    const[count,setCount]=useState(0);
+    const[open,setOpen] = useState(false);
+    const[repeat,setRepeat] = useState(false);
+    let cubebox = "cube";
+    let cubetop = "";
+    let timer;
+
+    function action(){
+        setCount(count+1);
+        setRepeat((count % 2 !== 0));
+        setOpen(!open);
+    }
+
+    if(repeat === false){
+        if(count !== 0){
+            cubebox = "cubeOpen";
+            cubetop = "cubeTopDown";
+        }
+    }else{
+        cubebox = "cubeClose";
+        cubetop = "cubeTopUp";
+    }
+    console.log(cubebox);
+    
     return (
         <nav className="navbar__container">
             <div className="navbar">
@@ -20,14 +43,10 @@ const Navbar = () => {
                         alt="freeav"
                     />
                 )}
-
-                <div className="burger" onClick={() => setOpen(!open)}>
-                    <div className="line"></div>
-                    <div className="line"></div>
-                    <div className="line"></div>
-                </div>
+                <div className={cubetop}/>
+                <div className={cubebox}
+                onClick={() => action()}/>
             </div>
-
             <div className="collapsible">
                 <Collapsible
                     open={open}
@@ -38,7 +57,7 @@ const Navbar = () => {
                         return (
                             <Link
                                 key={i}
-                                onClick={() => setOpen(false)}
+                                onClick={() => action()}
                                 to={element.route}
                                 className="nav_element"
                             >

@@ -1,10 +1,10 @@
-import RickMorty from "./rickMorty";
+import { lazy } from "react";
 
 const rickMortyRoutes = [
     {
         path: "rickmorty",
         exact: true,
-        component: <RickMorty />,
+        component: lazy(() => import("./rickMorty")),
     },
 ];
 

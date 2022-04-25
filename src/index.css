@@ -1,7 +1,8 @@
 body {
-    background-color: #101010;
+    background-image: url("./app/assets/background/cube-ground.png");
     color: #fff;
     font-family: "Poppins", sans-serif;
+    background-size: 100%;
 }
 
 * {
