@@ -12,6 +12,7 @@ const Navbar = () => {
     const[repeat,setRepeat] = useState(false);
     let cubebox = "cube";
     let cubetop = "";
+    let timer;
 
     function action(){
         setCount(count+1);
@@ -28,6 +29,8 @@ const Navbar = () => {
         cubebox = "cubeClose";
         cubetop = "cubeTopUp";
     }
+    console.log(cubebox);
+    
     return (
         <nav className="navbar__container">
             <div className="navbar">
@@ -54,7 +57,7 @@ const Navbar = () => {
                         return (
                             <Link
                                 key={i}
-                                onClick={() => setOpen(false)}
+                                onClick={() => action()}
                                 to={element.route}
                                 className="nav_element"
                             >

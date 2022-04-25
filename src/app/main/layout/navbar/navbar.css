@@ -54,9 +54,8 @@
     100% {margin-top: 45px;}
 }
 
-.cubeClose:not(:hover){
-    animation: reversrot 1s;
-    transform: rotate(0deg);
+.cube:hover{
+    transform: rotate(180deg);
 }
 
 .cubeOpen{
@@ -95,14 +94,21 @@
     z-index: 2;
     animation-delay: 3s;
     background-image: url("/src/app/assets/navbar/cube-close.png");
+    animation-delay: 10ms;
 }
+
+.cubeClose:not(:hover){
+    animation: reversrot 1s;
+    transform: rotate(0deg);
+}
+
 
 .cubeTopUp{
     width: 38px;
     height: 38px;
     margin-right: -38px;
+    animation: reversmov 0.35s;
     transform: rotate(180deg);
-    animation: revers 0.35s;
     margin-top: 45px;
     background-image: url("/src/app/assets/navbar/cube-open2.png");
     background-size: 38px 38px;
