@@ -22,7 +22,6 @@ const MealDB = () => {
             </div>
             <div className="categories__container">
                 {categories.map((category, i) => {
-                    console.log(category.strMealThumb);
                     return (
                         <p
                             key={i}

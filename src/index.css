@@ -1,7 +1,8 @@
 body {
     background-image: url("./app/assets/background/cube-ground.png");
-    color: #fff;
+    color: #000;
     font-family: "Poppins", sans-serif;
+    font-weight: 900;
     background-size: 100%;
 }
 
@@ -10,6 +11,10 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
+}
+
+img {
+    margin: 0;
 }
 
 .green__neon__button {
@@ -23,4 +28,11 @@ body {
 .green__neon__button:hover {
     -webkit-box-shadow: 5px 5px 50px -3px rgba(103,255,33,0.81); 
 box-shadow: 5px 5px 50px -3px rgba(103,255,33,0.81);
+}
+
+.text__box {
+    background-color: rgba(0, 0, 0, 0.567);
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
 }

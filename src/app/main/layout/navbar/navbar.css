@@ -22,13 +22,14 @@
     background: rgba(4, 4, 4, 0.5);
     width: 20%;
     margin-left: auto;
+    
 }
 
 .cube{
     width: 38px;
     height: 38px;
     margin-right: 20px;
-    margin-top: 45px;
+    /* margin-top: 45px; */
     cursor: pointer;
     background-image: url("/src/app/assets/navbar/cube-close.png");
     background-size: 38px 38px;
@@ -62,7 +63,7 @@
     width: 38px;
     height: 38px;
     margin-right: 20px;
-    margin-top: 45px;
+    /* margin-top: 45px; */
     cursor: pointer;
     background-image: url("/src/app/assets/navbar/cube-open1.png");
     transform: rotate(180deg);
@@ -86,7 +87,7 @@
     width: 38px;
     height: 38px;
     margin-right: 20px;
-    margin-top: 45px;
+    /* margin-top: 45px; */
     cursor: pointer;
     background-image: url("/src/app/assets/navbar/cube-open1.png");
     transform: rotate(180deg);
@@ -134,4 +135,12 @@
 .photos {
     width: 50px;
     margin-right: auto;
+}
+
+@media screen and (max-width: 800px) {
+
+    .collapsible {
+        width: 100%;
+    }
+    
 }

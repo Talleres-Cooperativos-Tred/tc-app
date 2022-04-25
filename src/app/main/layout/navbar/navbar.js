@@ -7,30 +7,28 @@ import "./navbar.css";
 
 const Navbar = () => {
     const avatarStore = useSelector(store => store.avatar);
-    const[count,setCount]=useState(0);
-    const[open,setOpen] = useState(false);
-    const[repeat,setRepeat] = useState(false);
+    const [count, setCount] = useState(0);
+    const [open, setOpen] = useState(false);
+    const [repeat, setRepeat] = useState(false);
     let cubebox = "cube";
     let cubetop = "";
-    let timer;
 
-    function action(){
-        setCount(count+1);
-        setRepeat((count % 2 !== 0));
+    function action() {
+        setCount(count + 1);
+        setRepeat(count % 2 !== 0);
         setOpen(!open);
     }
 
-    if(repeat === false){
-        if(count !== 0){
+    if (repeat === false) {
+        if (count !== 0) {
             cubebox = "cubeOpen";
             cubetop = "cubeTopDown";
         }
-    }else{
+    } else {
         cubebox = "cubeClose";
         cubetop = "cubeTopUp";
     }
-    console.log(cubebox);
-    
+
     return (
         <nav className="navbar__container">
             <div className="navbar">
@@ -43,9 +41,9 @@ const Navbar = () => {
                         alt="freeav"
                     />
                 )}
-                <div className={cubetop}/>
-                <div className={cubebox}
-                onClick={() => action()}/>
+
+                <div className={cubetop} />
+                <div className={cubebox} onClick={() => action()} />
             </div>
             <div className="collapsible">
                 <Collapsible

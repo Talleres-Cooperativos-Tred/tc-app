@@ -41,7 +41,7 @@ const AvatarGen = () => {
             >
                 Colocar de perfil
             </button>
-            <div>
+            <div className="text__box">
                 <p>
                     ¿No te gustan estos robots? ¡No hay problema! Tambien
                     tenemos... ¡mas robots! y monstruos. Y si todo esto te

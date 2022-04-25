@@ -19,8 +19,10 @@ const Card = ({ movie, index }) => {
                 src={movie.Poster}
                 alt={movie.Title}
             />
-            <h3> {movie.Title} </h3>
-            <p> {`${movie.Type} - ${movie.Year}`} </p>
+            <div className="text__box">
+                <h3> {movie.Title} </h3>
+                <p> {`${movie.Type} - ${movie.Year}`} </p>
+            </div>
         </motion.div>
     );
 };
