@@ -1,10 +1,10 @@
-import AvatarGen from "./avatarGen";
+import { lazy } from "react";
 
 const avatarGenRoutes = [
     {
         path: "avatar",
         exact: true,
-        component: <AvatarGen />,
+        component: lazy(() => import("./avatarGen")),
     },
 ];
 
